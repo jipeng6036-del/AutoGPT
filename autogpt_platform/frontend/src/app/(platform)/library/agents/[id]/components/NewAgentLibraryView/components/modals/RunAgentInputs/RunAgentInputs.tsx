@@ -175,14 +175,7 @@ export function RunAgentInputs({
           hideLabel
           type="date"
           value={dateValue ? format(dateValue, "yyyy-MM-dd") : ""}
-          onChange={(e) => {
-            const v = (e.target as HTMLInputElement).value;
-            if (!v) onChange(undefined);
-            else {
-              const [y, m, d] = v.split("-").map(Number);
-              onChange(new Date(y, m - 1, d));
-            }
-          }}
+          onChange={(e) => onChange(e.currentTarget.value || undefined)}
           placeholder={placeholder || "Pick a date"}
           {...props}
         />
